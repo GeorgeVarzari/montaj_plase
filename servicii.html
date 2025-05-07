@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicii - Montaj Plase</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    :root {
+      --primary: #2980b9;
+      --accent: #8e44ad;
+      --dark: #1e1e2f;
+      --light: #f7f9fc;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, var(--light), var(--white));
+      color: var(--dark);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 10% 20%, rgba(41,128,185,0.05), transparent 50%),
+                  radial-gradient(circle at 90% 80%, rgba(142,68,173,0.06), transparent 50%);
+      z-index: -1;
+      animation: floatBG 30s ease infinite;
+    }
+
+    @keyframes floatBG {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(20px, 10px); }
+    }
+
+    .section {
+      max-width: 1400px;
+      margin: auto;
+      padding: 6rem 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 3rem;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      position: relative;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 90px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 1rem auto 0;
+      border-radius: 2px;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scaleX(1); opacity: 0.9; }
+      50% { transform: scaleX(1.4); opacity: 0.6; }
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 3rem 0 4rem;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      background: var(--white);
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .tab:hover,
+    .tab.active {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .tab-content[style*="grid"] {
+      display: grid !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-content {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .service-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+
+    .service-card p {
+      color: #555;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="menu-placeholder"></div>
+
+  <section class="section">
+    <h2 class="animate__animated animate__fadeInDown">Serviciile Noastre</h2>
+
+    <div class="tabs">
+      <div class="tab active" onclick="showTab(0)">🛡️ Plase</div>
+      <div class="tab" onclick="showTab(1)">🏠 Tâmplărie</div>
+      <div class="tab" onclick="showTab(2)">⚙️ Rulouri</div>
+      <div class="tab" onclick="showTab(3)">🪟 Pervazuri</div>
+      <div class="tab" onclick="showTab(4)">🔧 Mentenanță</div>
+    </div>
+
+    <div class="tab-content" style="display: grid;">
+      <div class="service-card">
+        <h3>Plase Anti-insecte</h3>
+        <p>Plisse, rulou, pe balamale, magnetice – montaj precis și elegant, fără deteriorarea tâmplăriei. Soluția ideală pentru un confort ridicat în sezonul cald.</p>
+      </div>
+    </div>
+
+    <div class="tab-content" style="display: none;">
+      <div class="service-card">
+        <h3>Tâmplărie PVC & Aluminiu</h3>
+        <p>Montăm tâmplărie cu precizie milimetrică, folosind profile de calitate superioară, feronerie durabilă și geam termoizolant pentru confort, siguranță și economie de energie.</p>
+      </div>
+    </div>
+
+    <div class="tab-content" style="display: none;">
+      <div class="service-card">
+        <h3>Rulouri Exterioare / Interioare</h3>
+        <p>Protejează-ți casa de căldură, lumină excesivă sau frig cu rulouri moderne, perfect integrate în designul locuinței. Disponibile în variantă manuală sau motorizată.</p>
+      </div>
+    </div>
+
+    <div class="tab-content" style="display: none;">
+      <div class="service-card">
+        <h3>Pervazuri & Accesorii</h3>
+        <p>Îți oferim pervazuri din materiale premium, cu design elegant și durabilitate crescută – un plus de estetică, protecție și finisaj profesional pentru orice lucrare.</p>
+      </div>
+    </div>
+
+    <div class="tab-content" style="display: none;">
+      <div class="service-card">
+        <h3>Reglaje & Mentenanță</h3>
+        <p>Verificări periodice, reglaje fine și reparații rapide pentru a prelungi durata de viață a ferestrelor, ușilor și accesoriilor tale. Garanția funcționalității în timp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimoniale -->
+  <section class="section" style="background: linear-gradient(to right, #f4f7fb, #ffffff); padding-top: 4rem; padding-bottom: 6rem;">
+    <h2 class="animate__animated animate__fadeInDown">Ce Spun Clienții</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem;">
+      <div class="service-card">
+        <p style="font-style: italic; font-size: 1.05rem;">“Serviciile de montaj au fost impecabile, iar echipa extrem de profesionistă. Recomand cu încredere!”</p>
+        <h4 style="margin-top: 1.5rem; font-weight: 600; color: var(--accent);">— Andreea M.</h4>
+      </div>
+      <div class="service-card">
+        <p style="font-style: italic; font-size: 1.05rem;">“Foarte mulțumit de calitatea lucrării și de promptitudinea răspunsului. Totul a mers lin.”</p>
+        <h4 style="margin-top: 1.5rem; font-weight: 600; color: var(--accent);">— Radu P.</h4>
+      </div>
+      <div class="service-card">
+        <p style="font-style: italic; font-size: 1.05rem;">“Am apreciat atenția la detalii și designul discret al plaselor. O echipă serioasă!”</p>
+        <h4 style="margin-top: 1.5rem; font-weight: 600; color: var(--accent);">— Elena V.</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section" style="text-align: center; padding-bottom: 8rem;">
+    <h2 style="font-size: 2.4rem;">Ești pregătit pentru o casă fără insecte?</h2>
+    <p style="font-size: 1.1rem; margin: 1.5rem auto 2.5rem; max-width: 700px; color: #444;">Contactează-ne astăzi pentru o ofertă personalizată și bucură-te de confort și eleganță în locuința ta.</p>
+    <a href="contact.html" style="display: inline-block; padding: 1rem 2.2rem; background: linear-gradient(90deg, var(--primary), var(--accent)); color: white; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s ease;">Contactează-ne</a>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    function showTab(index) {
+      const tabs = document.querySelectorAll('.tab');
+      const contents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+      });
+
+      contents.forEach((content, i) => {
+        content.style.display = i === index ? 'grid' : 'none';
+      });
+    }
+
+    ScrollReveal().reveal('.service-card', {
+      origin: 'bottom',
+      distance: '40px',
+      duration: 1000,
+      easing: 'ease-in-out',
+      interval: 200
+    });
+
+    fetch('menu.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('menu-placeholder').innerHTML = data);
+
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+  </script>
+</body>
+</html>

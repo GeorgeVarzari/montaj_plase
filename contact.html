@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Montaj Plase</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    :root {
+      --primary: #2980b9;
+      --accent: #9b59b6;
+      --dark: #1e1e2f;
+      --bg-light: #f7f9fc;
+      --white: #ffffff;
+      --error: #e74c3c;
+      --success: #27ae60;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #f4f7fb 0%, #ffffff 100%);
+      color: var(--dark);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, rgba(41,128,185,0.06), transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(155,89,182,0.06), transparent 50%);
+      animation: backgroundMove 20s linear infinite;
+      z-index: -1;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 6rem 2rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: var(--dark);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      margin: 1rem auto 0;
+      border-radius: 2px;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    form {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+      display: grid;
+      gap: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1rem 1.4rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background: #fefefe;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 12px rgba(41, 128, 185, 0.25);
+      outline: none;
+      background: #fff;
+    }
+
+    .error-border {
+      border-color: var(--error) !important;
+    }
+
+    .error-message {
+      color: var(--error);
+      font-size: 0.9rem;
+      margin-top: -1.2rem;
+    }
+
+    button {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 20px rgba(41, 128, 185, 0.3);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(155, 89, 182, 0.3);
+    }
+
+    .alert {
+      display: none;
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: var(--success);
+      color: white;
+      border-radius: 10px;
+      font-weight: 500;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .contact-details {
+      margin-top: 4rem;
+      text-align: center;
+      color: var(--dark);
+    }
+
+    .contact-details p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .map-container {
+      margin-top: 4rem;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(60px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scaleX(1); opacity: 0.9; }
+      50% { transform: scaleX(1.5); opacity: 0.4; }
+    }
+
+    @keyframes backgroundMove {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(5%, 5%); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="menu-placeholder"></div>
+
+  <section class="section">
+    <h2 class="animate__animated animate__fadeInDown">Contactează-ne</h2>
+    <form id="contact-form" class="animate__animated animate__fadeInUp">
+      <input type="text" placeholder="Nume complet" id="name" name="name" required>
+      <div id="name-error" class="error-message" style="display:none;">Te rugăm să introduci un nume.</div>
+
+      <input type="email" placeholder="Adresă de email" id="email" name="email" required>
+      <div id="email-error" class="error-message" style="display:none;">Introdu o adresă de email validă.</div>
+
+      <textarea rows="5" placeholder="Mesajul tău" id="message" name="message" required></textarea>
+      <div id="message-error" class="error-message" style="display:none;">Mesajul nu poate fi gol.</div>
+
+      <button type="submit">Trimite mesajul</button>
+    </form>
+
+    <div class="alert" id="contact-alert">Mesajul a fost trimis cu succes! Îți vom răspunde în cel mai scurt timp.</div>
+
+    <div class="contact-details">
+      <p><strong>Email:</strong> contact@montajplase.ro</p>
+      <p><strong>Telefon:</strong> +40 721 123 456</p>
+      <p><strong>Adresă:</strong> Str. Exemplu 123, București</p>
+    </div>
+
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.7559333016265!2d26.102538315313015!3d44.42676777910269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff331a408af1%3A0xe3df7df15a0e8470!2sBucure%C8%99ti!5e0!3m2!1sro!2sro!4v1689184570782!5m2!1sro!2sro"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script>
+    emailjs.init("YOUR_PUBLIC_KEY");
+
+    ScrollReveal().reveal('.section', {
+      origin: 'bottom',
+      distance: '60px',
+      duration: 1200,
+      delay: 200,
+      easing: 'ease-in-out',
+      reset: false
+    });
+
+    ScrollReveal().reveal('.contact-details', {
+      origin: 'bottom',
+      distance: '40px',
+      duration: 1000,
+      delay: 400,
+      easing: 'ease-in-out'
+    });
+
+    ScrollReveal().reveal('.map-container', {
+      origin: 'bottom',
+      distance: '40px',
+      duration: 1000,
+      delay: 600,
+      easing: 'ease-in-out'
+    });
+
+    fetch('menu.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('menu-placeholder').innerHTML = data);
+
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const message = document.getElementById("message");
+      let valid = true;
+
+      if (!name.value.trim()) {
+        name.classList.add("error-border");
+        document.getElementById("name-error").style.display = "block";
+        valid = false;
+      } else {
+        name.classList.remove("error-border");
+        document.getElementById("name-error").style.display = "none";
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value.trim())) {
+        email.classList.add("error-border");
+        document.getElementById("email-error").style.display = "block";
+        valid = false;
+      } else {
+        email.classList.remove("error-border");
+        document.getElementById("email-error").style.display = "none";
+      }
+
+      if (!message.value.trim()) {
+        message.classList.add("error-border");
+        document.getElementById("message-error").style.display = "block";
+        valid = false;
+      } else {
+        message.classList.remove("error-border");
+        document.getElementById("message-error").style.display = "none";
+      }
+
+      if (valid) {
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+          from_name: name.value,
+          from_email: email.value,
+          message: message.value
+        }).then(() => {
+          document.getElementById('contact-alert').style.display = 'block';
+          document.getElementById('contact-form').reset();
+          setTimeout(() => {
+            document.getElementById('contact-alert').style.display = 'none';
+          }, 5000);
+        }).catch((error) => {
+          alert("A apărut o eroare la trimitere: " + JSON.stringify(error));
+        });
+      }
+    });
+  </script>
+</body>
+</html>
