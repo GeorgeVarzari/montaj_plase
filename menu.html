@@ -1,136 +1,149 @@
 <nav class="lux-nav animate__animated animate__fadeInDown">
-    <div class="nav-container">
-      <div class="logo">Montaj Plase</div>
-      <input type="checkbox" id="toggle" />
-      <label for="toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-      <div class="nav-links">
-        <a href="index.html">Acasă</a>
-        <a href="servicii.html">Servicii</a>
-        <a href="galerie.html">Galerie</a>
-        <a href="contact.html">Contact</a>
-      </div>
+  <div class="nav-container">
+    <div class="logo animate__animated animate__fadeInLeft animate__delay-1s">Montaj Plase</div>
+    <input type="checkbox" id="toggle" />
+    <label for="toggle" class="hamburger animate__animated animate__fadeIn animate__delay-1s">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <div class="nav-links animate__animated animate__fadeInRight animate__delay-1s">
+      <a href="index.html"><span>Acasă</span></a>
+      <a href="servicii.html"><span>Servicii</span></a>
+      <a href="galerie.html"><span>Galerie</span></a>
+      <a href="contact.html"><span>Contact</span></a>
     </div>
-  </nav>
-  
-  <style>
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
-  
-    .lux-nav {
-      background: linear-gradient(to right, #dbeeff, #f0f6fb);
-      border-bottom: 1px solid #d0e4f1;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-      transition: background-color 0.4s ease;
-    }
-  
-    .nav-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-  
-    .logo {
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: #1f3b57;
-      letter-spacing: 1px;
-      text-shadow: 1px 1px 1px #ffffff;
-    }
-  
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      transition: max-height 0.4s ease;
-    }
-  
-    .nav-links a {
-      color: #2c3e50;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.05rem;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-  
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      left: 0;
-      bottom: -4px;
-      background-color: #3498db;
-      transition: width 0.3s ease;
-    }
-  
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-  
-    .nav-links a:hover {
-      color: #3498db;
-    }
-  
+  </div>
+</nav>
+
+<style>
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+  .lux-nav {
+    background: linear-gradient(to right, #dbeeff, #f0f6fb);
+    border-bottom: 1px solid #d0e4f1;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    transition: background-color 0.4s ease, transform 0.4s ease;
+  }
+
+  .lux-nav:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #1f3b57;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px #ffffff;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    transition: max-height 0.4s ease;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a span {
+    display: inline-block;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    color: #2c3e50;
+    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  }
+
+  .nav-links a span::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover span {
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+    transform: scale(1.05);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1100;
+  }
+
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #2c3e50;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  #toggle {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
     .hamburger {
-      display: none;
+      display: flex;
+    }
+
+    .nav-links {
       flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #f7f9fc;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.5s ease;
     }
-  
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background: #2c3e50;
-      border-radius: 2px;
-      transition: all 0.3s ease;
+
+    #toggle:checked + .hamburger + .nav-links {
+      max-height: 400px;
+      padding: 1rem 2rem;
+      opacity: 1;
     }
-  
-    #toggle {
-      display: none;
+  }
+</style>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.lux-nav');
+    if (window.scrollY > 10) {
+      nav.style.background = 'linear-gradient(to right, #e1f0fb, #f7f9fc)';
+    } else {
+      nav.style.background = 'linear-gradient(to right, #dbeeff, #f0f6fb)';
     }
-  
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-  
-      .nav-links {
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #f7f9fc;
-        max-height: 0;
-        overflow: hidden;
-      }
-  
-      #toggle:checked + .hamburger + .nav-links {
-        max-height: 400px;
-        padding: 1rem 2rem;
-      }
-    }
-  </style>
-  
-  <script>
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('.lux-nav');
-      if (window.scrollY > 10) {
-        nav.style.background = 'linear-gradient(to right, #e1f0fb, #f7f9fc)';
-      } else {
-        nav.style.background = 'linear-gradient(to right, #dbeeff, #f0f6fb)';
-      }
-    });
-  </script>
-  
+  });
+</script>
